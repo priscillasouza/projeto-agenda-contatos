@@ -11,8 +11,17 @@ class ContactRepository {
             contactList.add(contact)
         }
 
+        //responsável por remover os contatos
         fun delete(contact: ContactEntity) {
 
+            var index = 0
+            for (item in contactList.withIndex()) {
+                if(item.value.name == contact.name && item.value.phone == contact.phone) {
+                    index = item.index
+                    break
+                }
+            }
+            contactList.removeAt(index)
         }
 
         //função responsável por retornar uma lista
